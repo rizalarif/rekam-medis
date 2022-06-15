@@ -1,0 +1,63 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+<title>Untitled Document</title>
+<!-- Bootstrap Core CSS -->
+<link href="../vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+
+<!-- MetisMenu CSS -->
+<link href="../vendor/metisMenu/metisMenu.min.css" rel="stylesheet">
+
+<!-- Custom CSS -->
+<link href="../dist/css/sb-admin-2.css" rel="stylesheet">
+
+<!-- Custom Fonts -->
+<link href="../vendor/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+</head>
+<body>
+	<table width="100%">
+		<tr>
+			<td widht="100%"><a href=''>
+				<h1><img src="../img/klinik.png" width="100px" onclick="javascript:window.print()" height="100px" alt=""></a>  Laporan Pasien</h1></a></td>
+		</tr>
+	</table>
+
+<table class="table" border="0.5">
+ <thead>
+  <tr>
+    		<th>No.</th>
+				<th>NIK Pasien</th>
+    		<th>Nama Pasien</th>
+				<th>Umur</th>
+    		<th>Jenis Kelamin</th>
+    		<th>Tanggal Lahir</th>
+				<th>Alamat</th>
+    		<th>Tanggal Daftar</th>
+  </tr>
+ </thead>
+<?php
+  include '../config/koneksi.php';
+	 		$no=0;
+	 			$sql=mysqli_query($koneksi, "SELECT * FROM tb_pasien WHERE stts='1'  ORDER BY id_pasien desc ");
+	 			while($bc=mysqli_fetch_array($sql)){
+	 $no++;
+  ?>
+  <tbody>
+  <tr>
+    		<td><?php echo"$no"; ?></td>
+				<td><?php echo"$bc[nik_pasien]"; ?></td>
+    		<td><?php echo"$bc[nama_pasien]"; ?></td>
+    		<td><?php echo"$bc[umur]"; ?></td>
+				<td><?php echo"$bc[jk]"; ?></td>
+				<td><?php echo"$bc[tgl_lahir]"; ?></td>
+    		<td><?php echo"$bc[alamat_pasien]"; ?></td>
+    		<td><?php echo"$bc[tgl_daftar]"; ?></td>
+
+  </tbody>
+  <?php
+	}
+  ?>
+</table>
+</body>
+</html>
